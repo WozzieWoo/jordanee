@@ -1,0 +1,20 @@
+
+<ion-content class="divFlex">
+  <div>
+    <ion-item [disabled]="data != 'Porfavor espere a que su profesor empiece la clase'">
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-button (click)="generarClase()">Iniciar Clase</ion-button>
+    </ion-item>
+
+  </div>
+  <div class="divFlex">
+    <qrcode style="width: min-content; height: min-content" class="centered" [qrdata]="data" [width]="500"
+      [errorCorrectionLevel]="'M'">
+
+    </qrcode>
+  </div>
+  <div class="divFlex">
+    <ion-label class="centered" style="font-size: 5vh;">{{data}}</ion-label>
+  </div>
+
+</ion-content>

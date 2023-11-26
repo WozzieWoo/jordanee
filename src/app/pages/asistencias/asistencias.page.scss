@@ -1,0 +1,31 @@
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.experiencias{
+    background-color: none;
+    background: none;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    border-color: black;
+    font-weight: lighter;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+.icon{
+    color: blue;
+}
+.icon2{
+    color: black;
+}
+
+.experiencias p{
+    text-decoration: none;
+}

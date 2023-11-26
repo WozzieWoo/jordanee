@@ -1,0 +1,209 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<h1>Crud Usuarios</h1>
+
+      
+      <ion-content class="ion-padding">
+       
+          
+          
+            <form [formGroup]="usuario" (ngSubmit)="guardarUsuario()">
+              <ion-item>
+                <ion-input formControlName="rut" label="Rut" labelPlacement="stacked" placeholder="Ingrese rut" type="text"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="nombre" label="Nombre" labelPlacement="stacked" placeholder="Ingrese nombre" type="text"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="ap_paterno" label="Nombre" labelPlacement="stacked" placeholder="Ingrese apellido" type="text"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="email" label="Correo" labelPlacement="stacked" placeholder="Ingrese correo" type="mail"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="fecha_nac" label="Fecha nacimiento" labelPlacement="stacked" placeholder="Ingrese fecha nacimiento" type="date"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="clave" label="Clave" labelPlacement="stacked" placeholder="Ingrese clave" type="password"></ion-input>
+              </ion-item>
+              <hr>
+              <ion-item>
+                <ion-input formControlName="perfil" label="Perfil" labelPlacement="stacked"  type="text"></ion-input>
+              </ion-item>
+              <ion-button type="submit" expand="block" color="success" [disabled]="usuario.invalid">Guardar</ion-button>
+              <ion-button (click)="modificarUsuario()" expand="block" color="warning" [disabled]="usuario.invalid">Modificar</ion-button>
+              <ion-button type="reset" expand="block" color="dark">Limpiar</ion-button>
+            </form>
+
+            
+         
+      </ion-content>
+<br>
+      <h1>Tabla de Usuarios Registrados</h1>
+
+      <div class="col-10 mt-5" class="ion-text-center" id="tabla" >
+        <ion-row >
+          <ion-col col-4>
+            <ion-label >Rut</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Nombre</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Apellido</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Email</ion-label>
+          </ion-col>
+          <ion-col  col-4>
+            <ion-label >Fecha Nacimiento</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >Clave</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Perfil</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >Listar</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >Eliminar</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row   *ngFor="let usuario of usuarios">
+          <ion-col col-4>
+            <ion-label >{{usuario.rut}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >{{usuario.nombre}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >{{usuario.ap_paterno}}</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >{{usuario.email}}</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >{{usuario.fecha_nac}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >{{usuario.clave}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >{{usuario.perfil}}</ion-label>
+          </ion-col>
+          <ion-col col-4 >
+            <ion-label >
+              <ion-button color="warning" slot="start" (click)="buscarUsuario(usuario.rut)">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+              </ion-button>
+            </ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >
+              <ion-button color="danger" slot="end" (click)="eliminarUsuario(usuario.rut)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        
+      </div>
+  <br>
+      <h1>Crud Asignaturas</h1>
+      
+      <form [formGroup]="asignatura" (ngSubmit)="guardarAsignatura()">
+        <ion-item>
+          <ion-input formControlName="cod_asignatura" label="Código Asignatura" labelPlacement="stacked" placeholder="Ingrese código asignatura" type="text"></ion-input>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-input formControlName="nombre" label="Nombre" labelPlacement="stacked" placeholder="Ingrese nombre" type="text"></ion-input>
+        </ion-item>
+        <hr>
+      
+        
+        <ion-item>
+          <ion-label position="stacked">Profesor</ion-label>
+          <ion-select formControlName="profesor" interface="popover">
+            <ion-select-option *ngFor="let profesor of usuarios" [value]="profesor.rut">{{profesor.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <ion-button type="submit" expand="block" color="success" [disabled]="asignatura.invalid">Guardar</ion-button>
+        <ion-button (click)="modificarAsignatura()" expand="block" color="warning" [disabled]="asignatura.invalid">Modificar</ion-button>
+        <ion-button type="reset" expand="block" color="dark">Limpiar</ion-button>
+      </form>
+      
+        <h1>Tabla de asignaturas registradas</h1>
+
+      <div class="col-10 mt-5" class="ion-text-center" id="tabla" >
+        <ion-row >
+          <ion-col col-4>
+            <ion-label >Codigo Asignatura</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Nombre</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Profesor</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Listar</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >Eliminar</ion-label>
+          </ion-col>
+          
+        </ion-row>
+
+        <ion-row   *ngFor="let asignatura of asignaturas">
+          <ion-col col-4>
+            <ion-label >{{asignatura.cod_asignatura}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label >{{asignatura.nombre}}</ion-label>
+          </ion-col>
+          <ion-col col-4>
+            <ion-label>{{ obtenerNombreProfesor(asignatura.profesor) }}</ion-label>
+          </ion-col>
+
+         
+          
+          
+          <ion-col col-4 >
+            <ion-label >
+              <ion-button color="warning" slot="start" (click)="buscarAsignatura(asignatura.cod_asignatura)">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+                </ion-button>
+            </ion-label>
+          </ion-col>
+
+          <ion-col col-4>
+            <ion-label >
+              <ion-button color="danger" slot="end" (click)="eliminarAsignatura(asignatura.cod_asignatura)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </ion-label>
+          </ion-col>
+
+        </ion-row>
+
+      </div>
+      
+      
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button class="regis"><a [routerLink]="['/registro']">Registrate!</a></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Formulario de login -->
+  <div id="header">
+    <h1>Login</h1>
+    <img src="../../../assets/img/logo.png" alt="">
+  </div>
+
+  <ion-card id="Formulario">
+    <ion-item>
+      <ion-input id="correo" [(ngModel)]="correo" label="Correo" labelPlacement="stacked" type="email" placeholder="Ingrese correo"></ion-input>
+    </ion-item>
+<br>
+    <ion-item>
+      <ion-input [(ngModel)]="clave" label="Clave" labelPlacement="stacked" type="password" placeholder="Ingrese clave"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    <ion-button (click)="login()">Inicio Sesión</ion-button>
+  </ion-item>
+
+  </ion-card>
+
+  
+  <div class="restablecer">
+    <a [routerLink]="['/restablecer']">Haz olvidado tu contraseña?</a>
+  </div>
+  
+
+
+</ion-content>

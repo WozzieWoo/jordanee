@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>restablecer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card class="formulario">
+    <ion-card-header>
+      <ion-card-title>Restablecer Contraseña</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input
+          [(ngModel)]="correo"
+          name="correo"
+          type="email"
+          placeholder="Ingrese su correo electrónico"
+          required
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="correoError" class="error-message">
+        El correo electrónico es requerido y debe ser válido.
+      </div>
+      <ion-button class="boton" (click)="restablecerContrasena()" expand="full" color="success">Restablecer Contraseña</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

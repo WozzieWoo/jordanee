@@ -1,0 +1,109 @@
+
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <div id="container" >
+        
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-back-button slot="start"></ion-back-button>
+      <ion-title>Usuarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"> 
+ 
+    <ion-header>
+      <div *ngIf="usuarios.length > 0; else no_hay">
+        <ion-list *ngFor="let usu of usuarios">
+          
+          <ion-item-sliding>
+            <ion-item (click)="buscar(usu.rut)">
+              <ion-label>{{usu.nombre}}</ion-label>
+            </ion-item>
+    
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="eliminar(usu.rut)">Eliminar</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+          
+    
+        </ion-list>
+      </div>
+    </ion-header>
+    <br><br><br><br>
+    
+    <ion-content>
+      <h2>Datos personales</h2>
+          <form [formGroup]="usuario" (ngSubmit)="registrar()">
+            <ion-item id="rut">
+              <ion-label position="stacked">Rut</ion-label>
+              <ion-input formControlName="rut" type="text" placeholder="Ingrese rut"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Nombre</ion-label>
+              <ion-input formControlName="nombre" type="text" placeholder="Ingrese su nombre"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Ap. Paterno</ion-label>
+              <ion-input formControlName="ap_paterno" type="text" placeholder="Ingrese su ap. paterno"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Fecha nacimiento</ion-label>
+              <ion-input formControlName="fecha_nac" type="date"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Correo</ion-label>
+              <ion-input formControlName="email" type="email" (ionChange)="onChangeCorreo()" placeholder="Ingrese su correo"></ion-input>
+            </ion-item>
+            
+    
+            <ion-item>
+              <ion-select [disabled]="true" formControlName="perfil" label="Tipo usuario" placeholder="Seleccione usuario">
+                <ion-select-option  value="admin">Administrador</ion-select-option>
+                <ion-select-option value="alumno">Alumno</ion-select-option>
+                <ion-select-option value="docente">Docente</ion-select-option>
+              </ion-select>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Clave</ion-label>
+              <ion-input formControlName="clave" type="password" placeholder="Ingrese su clave"></ion-input>
+            </ion-item>
+    
+            
+            
+            <div [hidden]="boton_modificar">
+              <ion-button color="warning" expand="block" (click)="modificar()">MODIFICAR</ion-button>
+            </div>
+
+          </form>
+    
+      
+    
+       
+    
+    
+    
+      <ng-template #no_hay>
+        <h1>NO EXISTEN USUARIOS!</h1>
+      </ng-template>
+      
+    </ion-content>
+    
+    
+  
+  </ion-content>
+</div>

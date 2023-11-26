@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>
+      nombre de la asignatura
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Detalles y acciones</h2>
+
+  <a class="experiencias">
+    <ion-item >
+      <ion-icon class="icon" name="people-outline"></ion-icon>
+      <p slot="end">Lista</p>
+    </ion-item>
+  </a>
+
+  <a class="experiencias">
+    <ion-item >
+      <ion-icon class="icon" name="videocam-outline"></ion-icon>
+      <p slot="end">Class Colaborate</p>
+    </ion-item>
+  </a>
+
+  <a class="experiencias">
+    <ion-item >
+      <ion-icon class="icon" name="build-outline"></ion-icon>
+      <p slot="end">Libros y herramientas</p>
+    </ion-item>
+  </a>
+
+<hr><hr><hr><hr>
+
+  
+  <h2>Contenido del curso</h2>
+
+  <a class="experiencias">
+    <ion-item >
+      <ion-icon class="icon2" name="calendar" slot="start"></ion-icon>
+      <p slot="end">Informacion General de la asignatura</p>
+    </ion-item>
+  </a>
+<hr>
+  <a class="experiencias">
+  <ion-item >
+    <ion-icon class="icon2" name="book" slot="start"></ion-icon>
+    <p slot="end">Experiencia 1</p>
+  </ion-item>
+</a>
+<hr>
+<a class="experiencias">
+  <ion-item >
+    <ion-icon class="icon2" name="book" slot="start"></ion-icon>
+    <p slot="end">Experiencia 2</p>
+  </ion-item>
+</a>
+<hr>
+<a class="experiencias">
+  <ion-item >
+    <ion-icon class="icon2" name="book" slot="start"></ion-icon>
+    <p slot="end">Experiencia 3</p>
+  </ion-item>
+</a>
+
+<a  class="experiencias">
+  <ion-item >
+    <ion-icon class="icon2" name="link" slot="start"></ion-icon>
+    <p slot="end">Acceso a la biblioteca</p>
+  </ion-item>
+</a>
+<hr><hr><hr><hr>
+<h2>Asistencia</h2>
+
+<a [routerLink]="['/qr']" class="experiencias">
+  <ion-item >
+    <ion-icon class="icon" name="list" slot="start"></ion-icon>
+    <p slot="end">Registrar asistencia</p>
+  </ion-item>
+</a>
+
+</ion-content>

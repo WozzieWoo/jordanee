@@ -1,0 +1,182 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <div id="container">
+        <p slot="end">Bienvenid@ :</p>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+    <ion-list class="fondo-lista1">
+
+      <ion-item *ngIf="tipo_usuario === 'Admin'" class="fondo-lista" color="warning">
+        <ion-icon name="person-outline"></ion-icon>
+        <a [routerLink]="['/administrador']">Panel de administración</a>
+      </ion-item>
+
+      <ion-item class="fondo-lista" color="warning">
+        <ion-icon name="map"></ion-icon>
+        <a [routerLink]="['/mapa']">Mapa Duoc</a>
+      </ion-item>
+
+      <ion-item class="fondo-lista" color="warning"><ion-icon name="person-outline"></ion-icon><a
+          href="">Perfil</a></ion-item>
+      <ion-item class="fondo-lista" color="warning"><ion-icon name="person-outline"></ion-icon><a
+          href="">Perfil</a></ion-item>
+      <ion-item class="fondo-lista" color="warning"><ion-icon name="person-outline"></ion-icon><a
+          href="">Perfil</a></ion-item>
+      <ion-item class="fondo-boton" color="warning"><ion-icon name="power-outline"></ion-icon><ion-button
+          style="background: transparent;" (click)="logout()">Cerrar Sesión</ion-button></ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar class="custom-navbar">
+      <img class="logo" src="../../../assets/img/titulo.png" alt="">
+    
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content>
+    <div class="main_content_div">
+
+
+      <div class="user_div">
+        <div class="firts_div">
+          <ion-label class="bienvenido">Bienvenido</ion-label>
+          <ion-label class="nombreuser">{{ usuario.nombre }}</ion-label> <!-- Muestra el nombre del usuario -->
+        </div>
+        <div class="user_back" [style.backgroundImage]="getCharacterImage()">
+        </div>
+
+      </div>
+
+      <div class="content_div animated bounceInUp">
+        <ion-label class="hola_label" *ngIf="tipo_usuario === 'Alumno'">Hola!, Por favor, registra tu asistencia</ion-label>
+        <ion-label class="hola_label" *ngIf="tipo_usuario === 'Profesor'">Hola!, Por favor, registra tu asistencia</ion-label>
+        <ion-label class="hola_label" *ngIf="tipo_usuario === 'Admin'">Hola Admin!, que gusto tenerte devuelta! </ion-label>
+
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="6" *ngFor="let item of subjects">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                <img src="{{item.img}}">
+                <ion-label>{{item.nombre}}</ion-label>
+                <p>{{item.cod_asignatura}}</p>
+              </div>
+            </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid fixed *ngIf="tipo_usuario === 'Admin'">
+          <ion-row>
+            <ion-col size="6">
+
+              <a [routerLink]="['/administrador']">
+              <div class="col_div">
+                
+                  <ion-icon name="person" class="iconos"></ion-icon >
+                  <h2>Crud Usuarios</h2>
+              </div>
+            </a>
+            </ion-col>
+            <ion-col size="6">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                
+                  <ion-icon name="settings" class="iconos"></ion-icon >
+                  <h2>Configuracion</h2>
+              </div>
+            </a>
+            </ion-col>
+            <ion-col size="6" color="light">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                
+                  <ion-icon name="list" class="iconos"></ion-icon >
+                  <h2>Crud Asignaturas</h2>
+              </div>
+            </a>
+            </ion-col>
+            <ion-col size="6">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                
+                  <ion-icon name="person" class="iconos"></ion-icon >
+                  <h2>Crud Usuarios</h2>
+              </div>
+            </a>
+            </ion-col>
+            <ion-col size="6">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                
+                  <ion-icon name="person" class="iconos"></ion-icon >
+                  <h2>Crud Usuarios</h2>
+              </div>
+            </a>
+            </ion-col>
+            <ion-col size="6">
+
+              <a [routerLink]="['/asistencias']">
+              <div class="col_div">
+                
+                  <ion-icon name="person" class="iconos"></ion-icon >
+                  <h2>Crud Usuarios</h2>
+              </div>
+            </a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+    
+<!-- Formulario de login 
+    <ion-tabs>
+      <ion-tab-bar class="custom-navbar">
+
+
+        <ion-tab-button *ngIf="tipo_usuario === 'Admin'" tab="administrador">
+          <ion-icon name="book"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button *ngIf="tipo_usuario === 'Profesor'" tab="#">
+          <ion-icon name="book"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button *ngIf="tipo_usuario === 'Alumno'" tab="#">
+          <ion-icon name="book"></ion-icon>
+        </ion-tab-button>
+
+
+
+        <ion-tab-button tab="#">
+          <ion-icon name="apps-outline"></ion-icon>
+        </ion-tab-button>
+
+
+
+        <ion-tab-button tab="#">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+
+    </ion-tabs>
+-->
+  </ion-content>
+</div>

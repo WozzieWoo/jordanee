@@ -1,0 +1,48 @@
+
+ion-content{
+
+    --background: url(https://static.vecteezy.com/system/resources/previews/006/786/661/original/soft-gradation-abstract-in-pastel-colorful-gradient-style-gradient-background-blurred-gradient-texture-decorative-elements-dark-green-cloud-wallpaper-free-vector.jpg) ;
+    display: flex;
+    justify-content: center;
+    }
+    
+    
+    
+
+    
+    .header{
+        margin-top: 100px;
+        margin-bottom: 80px;
+        text-align: center;
+    }
+    
+    
+    .foto{
+        height:180px;
+        margin-top: -50px;
+        
+    }
+    
+    .nuevo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+
+    .nuevo a{
+        color: #f1f1f1;
+        text-decoration: none;
+    }
+    
+    ion-padding ion-item{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 500px;
+    
+    }
+    
+    

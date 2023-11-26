@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar class="">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-content>
+
+      <form [formGroup]="usuario" (ngSubmit)="registrar()" >
+
+        <ion-item id="rut">
+          <ion-label position="stacked">Rut</ion-label>
+          <ion-input formControlName="rut" type="text" placeholder="Ingrese rut"></ion-input>
+        </ion-item>
+
+        <div *ngIf="usuario.get('rut')?.hasError('required') && usuario.get('rut')?.touched">
+          <ion-text color="danger">
+            El Rut es requerido.
+          </ion-text>
+        </div>
+        <div *ngIf="usuario.get('rut')?.hasError('pattern') && usuario.get('rut')?.touched">
+          <ion-text color="danger">
+            El Rut no es válido. Debe tener el formato correcto.
+          </ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input formControlName="nombre" type="text" placeholder="Ingrese su nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ap. Paterno</ion-label>
+          <ion-input formControlName="ap_paterno" type="text" placeholder="Ingrese su ap. paterno"></ion-input>
+        </ion-item>
+        
+
+        <ion-item>
+          <ion-label position="stacked">Fecha nacimiento</ion-label>
+          <ion-input formControlName="fecha_nac" type="date"></ion-input>
+        </ion-item>
+
+        <div *ngIf="usuario.get('fecha_nac')?.hasError('required') && usuario.get('fecha_nac')?.touched">
+          <ion-text color="danger">
+            La Fecha de Nacimiento es requerida.
+          </ion-text>
+        </div>
+        <div *ngIf="usuario.get('fecha_nac')?.hasError('edadInvalida') && usuario.get('fecha_nac')?.touched">
+          <ion-text color="danger">
+            Debes ser mayor de 17 años para registrarte.
+          </ion-text>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Correo</ion-label>
+          <ion-input formControlName="email" type="email" (ionChange)="onChangeCorreo()" placeholder="Ingrese su correo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input formControlName="clave" type="password" placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+        
+        <div *ngIf="usuario.get('clave')?.hasError('required') && usuario.get('clave')?.touched">
+          <ion-text color="danger">
+            La contraseña es requerida.
+          </ion-text>
+        </div>
+        
+        <div *ngIf="usuario.get('clave')?.hasError('pattern') && usuario.get('clave')?.touched">
+          <ion-text color="danger">
+            La contraseña debe tener al menos 6 caracteres, incluyendo al menos un número, una letra minúscula y una letra mayúscula.
+          </ion-text>
+        </div>
+        
+        <ion-item>
+          <ion-label position="stacked">Confirmar Contraseña</ion-label>
+          <ion-input formControlName="confirmarClave" type="password" placeholder="Confirme su contraseña"></ion-input>
+        </ion-item>
+        
+        <div *ngIf="usuario.get('confirmarClave')?.hasError('passwordMismatch') && usuario.get('confirmarClave')?.touched">
+          <ion-text color="danger">
+            Las contraseñas no coinciden.
+          </ion-text>
+        </div>
+        
+        
+
+        <ion-item>
+          <ion-select [disabled]="true" formControlName="perfil" label="Tipo usuario" placeholder="Seleccione usuario">
+            <ion-select-option  value="admin">Administrador</ion-select-option>
+            <ion-select-option value="alumno">Alumno</ion-select-option>
+            <ion-select-option value="docente">Docente</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button [disabled]="!esFormularioValido()" type="submit" expand="block" color="success">Registrar</ion-button>
+
+
+
+        
+        <div [hidden]="boton_modificar">
+          <ion-button color="warning" expand="block" (click)="modificar()">MODIFICAR</ion-button>
+        </div>
+
+        <ion-button color="dark" expand="block" type="reset">LIMPIAR</ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #no_hay>
+    <h1>NO EXISTEN USUARIOS!</h1>
+  </ng-template>
+  
+</ion-content>
